@@ -1,0 +1,61 @@
+blockquote {
+  font-size: 14px;
+  color: #333333;
+}
+
+blockquote .author {
+  font-style: italic;
+  color: #555555;
+  display: block;
+  margin: 10px auto 0 100px;
+}
+
+h1.jumbo {
+  font-size: 64px;
+  text-align: center;
+}
+
+h3.jumbo {
+  font-size: 48px;
+  text-align: center;
+}
+
+.warning {
+  color: #880000;
+}
+
+.info {
+  color: #3366cc;
+}
+
+.success {
+  color: #55cc33;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.title-slide {
+/*  background-image: url("../../assets/img/john_galt.png"); */
+  background-color: #fffff0;
+}
+
+.title-slide hgroup > h1 {
+  color: #880000;
+}
+
+.title-slide hgroup > h2 {
+  color: #2d2d2d;
+}
+
+slides slide {
+  background-color: #fffff0;
+  color: #555555;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

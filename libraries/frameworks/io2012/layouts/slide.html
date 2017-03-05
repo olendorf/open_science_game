@@ -1,0 +1,27 @@
+<slide class="{{ slide.class }}" id="{{ slide.id }}" style="background:{{{ slide.bg }}};">
+  {{# slide.header }}
+  <hgroup>
+    {{{ slide.header}}}
+  </hgroup>
+  {{/ slide.header }}
+  <div class='container'>
+    <article data-timings="{{ slide.dt }}">
+      {{{ slide.content }}}
+    </article>
+  </div>
+  <div class='clearfix'></div>
+  <div>
+    <footer>
+      {{{ slide.footer.html }}}
+    </footer>
+  </div>
+  <!-- Presenter Notes -->
+  {{# slide.pnotes }}
+  <aside class="note" id="{{ id }}">
+    <section>
+      {{{ html }}}
+    </section>
+  </aside>
+  {{/ slide.pnotes }}
+</slide>
+
