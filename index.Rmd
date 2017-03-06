@@ -12,8 +12,21 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-```{r, setup, echo=FALSE, results='hide', warning=TRUE, message=TRUE, error=TRUE}
+```{r, setup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, error=TRUE}
   library(png) 
+```
+
+```{r, initialize some variables, echo=FALSE, results='hide', warning=FALSE, message=FALSE, error=TRUE}
+  frequency_c <- seq(0.0, 1.0, 0.01)
+
+  # Define the payoffs for a play such that the first letter is the opponent's
+  # move and the second is the focal player
+  # i.e. payoff_dc is the payoff when the focal player cooperates and the 
+  # oppenent defects.
+  payoff_cc <- 7
+  payoff_cd <- 10
+  payoff_dc <- 0
+  payoff_dd <- 3
 ```
 
 
@@ -166,4 +179,17 @@ knit        : slidify::knit2slides
 
 <h3 class='jumbo'>Expanding to the Population Level</h3>
 <h1 class= 'jumbo info'>The Person Over There Seems More Trustworthy</h1>
+
+--- .class #id
+
+## Playing Against a Population
+
+```{r, Simple PD with population, echo=FALSE, fig.align='center'}
+  fitness_c <- frequency_c * payoff_cc + (1 - frequency_c) * payoff_dc
+  fitness_d <- frequency_c * payoff_cd + (1 - frequency_c) * payoff_dd
+  plot(frequency_c, fitness_d, type = 'l', col = 'red4', ylim=c(0, 10), xlim=c(0.0, 1.0), xaxs='i', yaxs='i', xlab = 'Frequency of Cooperators', ylab = 'Expected Payoff')
+  lines(frequency_c, fitness_c, col = 'chartreuse4')
+  legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c('red3', 'chartreuse4'), lty=1:2)
+
+```
 

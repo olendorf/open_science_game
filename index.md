@@ -15,6 +15,8 @@ knit        : slidify::knit2slides
 
 
 
+
+
 <img src="assets/fig/A researcher's dilemma-1.png" title="plot of chunk A researcher's dilemma" alt="plot of chunk A researcher's dilemma" style="display: block; margin: auto;" />
 
 ---&vcenter .class #id
@@ -141,4 +143,10 @@ knit        : slidify::knit2slides
 
 <h3 class='jumbo'>Expanding to the Population Level</h3>
 <h1 class= 'jumbo info'>The Person Over There Seems More Trustworthy</h1>
+
+--- .class #id
+
+## Playing Against a Population
+
+<img src="assets/fig/Simple PD with population-1.png" title="plot of chunk Simple PD with population" alt="plot of chunk Simple PD with population" style="display: block; margin: auto;" />
 
