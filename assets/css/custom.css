@@ -20,6 +20,20 @@ h3.jumbo {
   text-align: center;
 }
 
+.big-picture .image {
+  position: relative;
+  margin: -400px auto auto -100px;
+}
+
+.big-picture .text h2 {
+  position: absolute;
+  color: #eeac44;
+  width: 600px;
+  height: 50px;
+  left: 100px;
+  top: 800px;
+}
+
 .warning {
   color: #880000;
 }

@@ -39,18 +39,18 @@ knit        : slidify::knit2slides
 
 ```
 
----&vcenter .class #id
+---&vcenter
 
 <h1 class='jumbo'>We Need Solutions That Survive the <span class='warning'>WWJD</span> Test<h1>
 
---- .class #id
+---
 
 
 ```{r, Ayn Rand saying What would John Galt do, out.width="800px", echo=FALSE, fig.align='center'}
   knitr::include_graphics('assets/img/ayn_rand.png')
 ```
 
----&twocol .class #id
+---&twocol
 
 ## A Game Theoretic Approach
 
@@ -74,7 +74,7 @@ knit        : slidify::knit2slides
 *** {name: footer}
 <blockquote>Truth...is much too complicated to allow anything but approximations. <br/><span class="author">-John Von Neumann</span></blockquote>
 
---- .class #id
+---
 ## Prisoners' Dilemma
 <br/>
 <br/>
@@ -89,7 +89,7 @@ knit        : slidify::knit2slides
 *** {name: footer}
 <blockquote>Beware of altruism. It is based on self-deception, the root of all evil. <br/><span class="author">-Robert Heinlein in "Time Enough for Love"</span></blockquote>
 
----&twocol .class #id 
+---&twocol
 
 ```{r, Determining the Payoffs, out.width="600px", echo=FALSE, fig.align='center'}
   knitr::include_graphics('assets/img/cost_benefits.png')
@@ -103,7 +103,7 @@ knit        : slidify::knit2slides
   <span class="warning">Cost</span> => Chance of Promotion
 </h4>
 
---- .class #id
+--- .class
 
 ## Play a Game With Your Neighbor
 
@@ -121,7 +121,7 @@ knit        : slidify::knit2slides
 *** {name: footer}
 <blockquote>Every time you play your hand the way you would if you could see your opponent's cards, you gain, and every time your oppenents play their cards differently from the way they would play them if they could see your cards, you gain.<span class="author">-David Sklansky (3x World Series of Poker Champion, poker theoretician and author)</span></blockquote>
 
---- .class #id
+---
 
 ## Play a Game With Your Neighbor
 
@@ -139,7 +139,7 @@ knit        : slidify::knit2slides
 *** {name: footer}
 <blockquote>The only redeeming thing about mankind is coopration.<span class="author">-Bertrand Russell (Philosopher, Author, Nobel Laureate)</span></blockquote>
 
---- .class #id
+---
 
 ## Play a Game With Your Neighbor
 
@@ -157,7 +157,7 @@ knit        : slidify::knit2slides
 *** {name: footer}
 <blockquote>A single raised eyebrow. "You've defected, sweetheart. No use worrying about the big, bad wolf now.<span class="author">-Nalini Singh in "Kiss of Snow"</span></blockquote>
 
---- .class #id
+---
 
 ## Two Player Single Play Equilibrium
 
@@ -175,12 +175,12 @@ knit        : slidify::knit2slides
 *** {name: footer}
 <blockquote>Neither pleasure nor pain should enter as motives when one must do what must be done.<span class="author">-Julius Evola in "Ride the Tiger: A Survival Manual for the Aristocrats of the Soul"</span></blockquote>
 
----&vcenter .class #id
+---&vcenter
 
 <h3 class='jumbo'>Expanding to the Population Level</h3>
 <h1 class= 'jumbo info'>The Person Over There Seems More Trustworthy</h1>
 
---- .class #id
+---
 
 ## Playing Against a Population
 
@@ -192,4 +192,15 @@ knit        : slidify::knit2slides
   legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c('red3', 'chartreuse4'), lty=1:2)
 
 ```
+
+--- .big-picture
+<div class='image ape-pic'>
+```{r, I want to play again, out.width="1200px", echo=FALSE}
+  knitr::include_graphics('assets/img/ape.png')
+```
+  <div class="text">
+    <h2> I Want To Play Again! </h2>
+  </div>
+</div>
+
 
