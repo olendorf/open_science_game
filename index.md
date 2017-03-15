@@ -33,6 +33,7 @@ knit        : slidify::knit2slides
 
 ## A Game Theoretic Approach
 
+
 *** {name: left}
 <br/>
  - Developed in the 1928 by John von Neumann
@@ -48,7 +49,11 @@ knit        : slidify::knit2slides
 <br/>
 <img src="assets/img/john_von_neuman.png" title="plot of chunk Introduce Game Theory" alt="plot of chunk Introduce Game Theory" width="300px" style="display: block; margin: auto;" />
 
+
 *** {name: footer}
+
+<br/>
+<hr/>
 <blockquote>Truth...is much too complicated to allow anything but approximations. <br/><span class="author">-John Von Neumann</span></blockquote>
 
 ---
@@ -156,9 +161,10 @@ knit        : slidify::knit2slides
 ## Playing Against a Population
 
 <img src="assets/fig/Simple PD with population-1.png" title="plot of chunk Simple PD with population" alt="plot of chunk Simple PD with population" width="500px" height="500px" style="display: block; margin: auto;" />
-<hr/>
+
 
 *** {name: footer}
+<hr/>
 <blockquote>Expectation is the mother of all frustration. <br/><span class="author">-Antonio Banderas</span></blockquote>
 
 --- .big-picture
@@ -174,6 +180,11 @@ knit        : slidify::knit2slides
 ## Playing More Than Once
 
 <img src="assets/fig/C vs D repeated interactions, -1.png" title="plot of chunk C vs D repeated interactions, " alt="plot of chunk C vs D repeated interactions, " style="display: block; margin: auto;" />
+
+
+*** {name: footer}
+<hr/>
+<blockquote>Game over man!! GAME OVER! <br/><span class="author">-Bill Paxton in "Aliens"</span></blockquote>
 
 ---&twocol
 
@@ -208,6 +219,27 @@ knit        : slidify::knit2slides
 
 <img src="assets/fig/Ternary Plot with 3 interactions, -1.png" title="plot of chunk Ternary Plot with 3 interactions, " alt="plot of chunk Ternary Plot with 3 interactions, " style="display: block; margin: auto;" />
 
+---
 
+<img src="assets/img/choose_your_sith.png" title="plot of chunk Choose Your Favorite Sith" alt="plot of chunk Choose Your Favorite Sith" width="800px" style="display: block; margin: auto;" />
 
+---
 
+## Open Science Works If...
+<br>
+<br>
+<img src="assets/img/open_science_works_if.png" title="plot of chunk Open Science Works If" alt="plot of chunk Open Science Works If" width="800px" style="display: block; margin: auto;" />
+
+---
+
+## Questions?
+
+<br>
+<br>
+
+<h5> Code is available at <a href="https://github.com/olendorf/open_science_game">https://github.com/olendorf/open_science_game</a>
+
+<br>
+<br>
+
+<h5> Slides can be views at <a href="https://olendorf.github.io/open_science_game">https://olendorf.github.io/open_science_game</a>

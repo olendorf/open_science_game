@@ -76,6 +76,7 @@ knit        : slidify::knit2slides
 
 ## A Game Theoretic Approach
 
+
 *** {name: left}
 <br/>
  - Developed in the 1928 by John von Neumann
@@ -93,7 +94,11 @@ knit        : slidify::knit2slides
   knitr::include_graphics('assets/img/john_von_neuman.png')
 ```
 
+
 *** {name: footer}
+
+<br/>
+<hr/>
 <blockquote>Truth...is much too complicated to allow anything but approximations. <br/><span class="author">-John Von Neumann</span></blockquote>
 
 ---
@@ -220,9 +225,10 @@ knit        : slidify::knit2slides
   legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1)
 
 ```
-<hr/>
+
 
 *** {name: footer}
+<hr/>
 <blockquote>Expectation is the mother of all frustration. <br/><span class="author">-Antonio Banderas</span></blockquote>
 
 --- .big-picture
@@ -248,6 +254,11 @@ legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1
 
 
 ```
+
+
+*** {name: footer}
+<hr/>
+<blockquote>Game over man!! GAME OVER! <br/><span class="author">-Bill Paxton in "Aliens"</span></blockquote>
 
 ---&twocol
 
@@ -429,6 +440,31 @@ legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1
   )
 ```
 
+---
 
+```{r, Choose Your Favorite Sith, out.width="800px", echo=FALSE, fig.align='center'}
+  knitr::include_graphics('assets/img/choose_your_sith.png')
+```
 
+---
 
+## Open Science Works If...
+<br>
+<br>
+```{r, Open Science Works If, out.width="800px", echo=FALSE, fig.align='center'}
+  knitr::include_graphics('assets/img/open_science_works_if.png')
+```
+
+---
+
+## Questions?
+
+<br>
+<br>
+
+<h5> Code is available at <a href="https://github.com/olendorf/open_science_game">https://github.com/olendorf/open_science_game</a>
+
+<br>
+<br>
+
+<h5> Slides can be views at <a href="https://olendorf.github.io/open_science_game">https://olendorf.github.io/open_science_game</a>
