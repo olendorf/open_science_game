@@ -3,7 +3,7 @@ title       : A Game Theoretical Exploration of Open Science
 subtitle    : An Objectivist's Guide
 author      : Robert Olendorf
 event       : Penn State Libraries Research Colloquium
-event_date  : March 28, 2017
+event_date  : March 16, 2017
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -13,21 +13,43 @@ knit        : slidify::knit2slides
 ---
 
 ```{r, setup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, error=TRUE}
+
+  # Checks to see if a package is already installed.
+  is_installed <- function(package_name) is.element(package_name, installed.packages()[,1])
+  
+  # If a package is not installed, install it. Then load the package.
+  install_and_load <- function(package_name) {
+    if(!is_installed(package_name)) {
+      install.packages(package_name)
+    }
+    library(package_name, character.only = TRUE)
+  }
+  
   library(png) 
+  install_and_load("ggtern")
+  
 ```
 
 ```{r, initialize some variables, echo=FALSE, results='hide', warning=FALSE, message=FALSE, error=TRUE}
-  frequency_c <- seq(0.0, 1.0, 0.01)
+  # frequency_c <- seq(0.0, 1.0, 0.01)
+  freq_d <- seq(0.0, 1.0, 0.01)
 
   # Define the payoffs for a play such that the first letter is the opponent's
   # move and the second is the focal player
-  # i.e. payoff_dc is the payoff when the focal player cooperates and the 
+  # i.e. p_dc is the payoff when the focal player cooperates and the 
   # oppenent defects.
-  payoff_cc <- 7
-  payoff_cd <- 10
-  payoff_dc <- 0
-  payoff_dd <- 3
+  p_cc <- 7
+  p_cd <- 10
+  p_dc <- 0
+  p_dd <- 3
+  
+  d_color <- 'red3'
+  c_color <- 'chartreuse4'
+  tft_color <- 'steelblue4'
+  
+  mu <- seq(1, 15, 2)   # expected number of interactions
 ```
+
 
 
 ```{r, A researcher\'s dilemma, fig.width=8.0, echo=FALSE, fig.align='center'}
@@ -89,7 +111,7 @@ knit        : slidify::knit2slides
 *** {name: footer}
 <blockquote>Beware of altruism. It is based on self-deception, the root of all evil. <br/><span class="author">-Robert Heinlein in "Time Enough for Love"</span></blockquote>
 
----&twocol
+---
 
 ```{r, Determining the Payoffs, out.width="600px", echo=FALSE, fig.align='center'}
   knitr::include_graphics('assets/img/cost_benefits.png')
@@ -103,7 +125,13 @@ knit        : slidify::knit2slides
   <span class="warning">Cost</span> => Chance of Promotion
 </h4>
 
---- .class
+<br/>
+<hr/>
+
+*** {name: footer}
+<blockquote>Nature is an expert in cost-benefit analysis. Although she does her accounting a little differently, she always collects in the long run. <br/><span class="author">-Margaret Atwood</span></blockquote>
+
+---
 
 ## Play a Game With Your Neighbor
 
@@ -184,14 +212,18 @@ knit        : slidify::knit2slides
 
 ## Playing Against a Population
 
-```{r, Simple PD with population, echo=FALSE, fig.align='center'}
-  fitness_c <- frequency_c * payoff_cc + (1 - frequency_c) * payoff_dc
-  fitness_d <- frequency_c * payoff_cd + (1 - frequency_c) * payoff_dd
-  plot(frequency_c, fitness_d, type = 'l', col = 'red4', ylim=c(0, 10), xlim=c(0.0, 1.0), xaxs='i', yaxs='i', xlab = 'Frequency of Cooperators', ylab = 'Expected Payoff')
-  lines(frequency_c, fitness_c, col = 'chartreuse4')
-  legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c('red3', 'chartreuse4'), lty=1:2)
+```{r, Simple PD with population, echo=FALSE, fig.align='center', out.width="500px", out.height="500px"}
+  fit_c <- freq_d * p_dc + (1 - freq_d) * p_cc
+  fit_d <- freq_d * p_dd + (1 - freq_d) * p_cd
+  plot(freq_d, fit_d, type = 'l', col = d_color, ylim=c(0, 10), xlim=c(0.0, 1.0), xaxs='i', yaxs='i', xlab = 'Frequency of Defectors', ylab = 'Expected Payoff')
+  lines(freq_d, fit_c, col = c_color)
+  legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1)
 
 ```
+<hr/>
+
+*** {name: footer}
+<blockquote>Expectation is the mother of all frustration. <br/><span class="author">-Antonio Banderas</span></blockquote>
 
 --- .big-picture
 <div class='image ape-pic'>
@@ -205,20 +237,108 @@ knit        : slidify::knit2slides
 
 ---
 
-## New Slide
+## Playing More Than Once
 
-```{r opts.label = 'shiny'}
-slidifyUI(
-  sidebarPanel(
-    selectInput('sex', 'Choose Sex', c('Male', 'Female')),
-    selectInput('type', 'Choose Type',
-      c('multiBarChart', 'multiBarHorizontalChart')
-    )
-  ),
-  mainPanel(
-    tags$div(id = 'nvd3plot', class='shiny-html-output nvd3 rChart')
-  )
-)
+```{r, C vs D repeated interactions, , echo=FALSE, fig.align='center'}
+fit_c_in_c_vs_d_iterated <- ((freq_d * p_dc) * mu[[3]])/mu[[3]] + (((1 - freq_d) * p_cc) * mu[[3]])/mu[[3]]
+fit_d_in_c_vs_d_iterated <- ((freq_d * p_dd) * mu[[3]])/mu[[3]] + (((1 - freq_d) * p_cd) * mu[[3]])/mu[[3]]
+plot(freq_d, fit_d_in_c_vs_d_iterated, type = 'l', col = d_color, ylim=c(0, 10), xlim=c(0.0, 1.0), xaxs='i', yaxs='i', xlab = 'Frequency of Defectors', ylab = 'Expected Payoff')
+lines(freq_d, fit_c_in_c_vs_d_iterated, col = c_color)
+legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1)
+
+
 ```
+
+---&twocol
+
+## Tit For Tat
+
+<br>
+<br>
+
+*** {name: left}
+```{r, Tit For Tat flow, out.width="500px", echo=FALSE, fig.align='center'}
+  knitr::include_graphics('assets/img/tft_flow.png')
+```
+
+*** {name: right}
+```{r, Tit for Tat Attributes, out.width="500px", echo=FALSE, fig.align='center'}
+  knitr::include_graphics('assets/img/tft_attributes.png')
+```
+
+
+*** {name: footer}
+<br>
+<br>
+
+<hr/>
+<blockquote>There is one word which may serve as a rule of practice for all one&apos;s life - reciprocity.<br/><span class="author">-Confucius</span></blockquote>
+
+---
+
+## Tit For Tat In A Population
+
+```{r, TFT vs D repeated interactions, , echo=FALSE, fig.align='center'}
+
+  fit_tft_in_tft_vs_d_3 <- freq_d * ((p_dc / mu[[2]]) + ((p_dd * (mu[[2]] - 1)))/mu[[2]]) + (1 - freq_d) * p_cc
+  fit_tft_in_tft_vs_d_9 <- freq_d * ((p_dc / mu[[5]]) + ((p_dd * (mu[[5]] - 1)))/mu[[5]]) + (1 - freq_d) * p_cc
+  fit_tft_in_tft_vs_d_15 <- freq_d * ((p_dc / mu[[8]]) + ((p_dd * (mu[[8]] - 1)))/mu[[8]]) + (1 - freq_d) * p_cc
+  
+  fit_d_in_tft_vs_d_3 <- freq_d * p_dd + (1 - freq_d) * (p_cd/mu[[2]] + (p_dd * (mu[[2]] - 1))/mu[[2]])
+  fit_d_in_tft_vs_d_9 <- freq_d * p_dd + (1 - freq_d) * (p_cd/mu[[5]] + (p_dd * (mu[[5]] - 1))/mu[[5]])
+  fit_d_in_tft_vs_d_15 <- freq_d * p_dd + (1 - freq_d) * (p_cd/mu[[8]] + (p_dd * (mu[[8]] - 1))/mu[[8]])
+  
+  plot(freq_d, fit_d_in_tft_vs_d_3, type = 'l', col = d_color, ylim = c(0, 8), xlim = c(0.0, 1.0), xaxs = 'i', yaxs = 'i', xlab = 'Frequency of Defectors', ylab = 'Expected Payoff', lty = 3)
+  lines(freq_d, fit_d_in_tft_vs_d_9, col = d_color, lty = 2)
+  lines(freq_d, fit_d_in_tft_vs_d_15, col = d_color, lty = 1)
+  lines(freq_d, fit_tft_in_tft_vs_d_3, col = tft_color, lty = 3)
+  lines(freq_d, fit_tft_in_tft_vs_d_9, col = tft_color, lty = 2)
+  lines(freq_d, fit_tft_in_tft_vs_d_15, col = tft_color, lty = 1)
+  
+  legend(0.65, 9.5, c('Defectors', 'Cooperators'), col = c(d_color, tft_color), lty=1)
+  legend(0.65, 7.5, c('3 Interactions', '9 Interactions', '15 Interactions'), lty=c(3, 2, 1))
+
+
+```
+
+---
+
+```{r, Ternary Plot with 3 interactions, , echo=FALSE, fig.align='center'}
+  freq_c = c()
+  freq_d = c()
+  freq_tft = c()
+  for(i in seq(0.0, 1.0, 0.01)) {
+    for(j in seq(0.0, (1.0 - i), 0.01)) {
+      freq_c <- c(freq_c, i)
+      freq_d <- c(freq_d, j)
+      freq_tft <- c(freq_tft, 1 - i - j)
+    }
+  }
+  tern_data <- cbind.data.frame(freq_c, freq_d, freq_tft)
+
+  tern_data$fit_c_3 <- tern_data$freq_c * p_cc + 
+                       tern_data$freq_tft * p_cc + 
+                       tern_data$freq_d * p_dc
+  tern_data$fit_tft_3 <- tern_data$freq_c * p_cc + 
+                         tern_data$freq_tft * p_cc + 
+                         tern_data$freq_d * (p_dc/mu[[2]] + (p_dd * (mu[[2]] -1))/mu[[2]])
+
+  tern_data$fit_d_3 <- tern_data$freq_c * p_cd + 
+                       tern_data$freq_tft * (p_cd/mu[[2]] + (p_dd * (mu[[2]] - 1))/mu[[2]]) + 
+                       tern_data$freq_d * p_dd
+  
+  tern_data$opt_3 <- ifelse(tern_data$fit_c_3 >= tern_data$fit_d_3 & 
+                            tern_data$fit_c_3 >= tern_data$fit_tft_3, 'Cooperate',
+                       ifelse(tern_data$fit_d_3 >= tern_data$fit_c_3 & 
+                              tern_data$fit_d_3 >= tern_data$fit_tft_3, 'Defect', 'TFT'))
+  
+  base = ggtern(data=tern_data, aes(freq_c, freq_d, freq_tft, color = factor(opt_3), alpha = 0.5))
+base + theme_matrix() + geom_point(alpha = 0.1) +  scale_color_manual(values = c(c_color, d_color, tft_color)) + theme_showarrows() + labs(title = "Optimal Strategy\nInteractions = 3", fill = "Strategy", x = 'Cooperate', y = 'Defect', z = 'TFT')
+
+
+
+```
+
+
 
 

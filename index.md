@@ -3,7 +3,7 @@ title       : A Game Theoretical Exploration of Open Science
 subtitle    : An Objectivist's Guide
 author      : Robert Olendorf
 event       : Penn State Libraries Research Colloquium
-event_date  : March 28, 2017
+event_date  : March 16, 2017
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -11,6 +11,7 @@ widgets     : []            # {mathjax, quiz, bootstrap, shiny, interactive}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
+
 
 
 
@@ -63,7 +64,7 @@ knit        : slidify::knit2slides
 *** {name: footer}
 <blockquote>Beware of altruism. It is based on self-deception, the root of all evil. <br/><span class="author">-Robert Heinlein in "Time Enough for Love"</span></blockquote>
 
----&twocol
+---
 
 <img src="assets/img/cost_benefits.png" title="plot of chunk Determining the Payoffs" alt="plot of chunk Determining the Payoffs" width="600px" style="display: block; margin: auto;" />
 
@@ -75,7 +76,13 @@ knit        : slidify::knit2slides
   <span class="warning">Cost</span> => Chance of Promotion
 </h4>
 
---- .class
+<br/>
+<hr/>
+
+*** {name: footer}
+<blockquote>Nature is an expert in cost-benefit analysis. Although she does her accounting a little differently, she always collects in the long run. <br/><span class="author">-Margaret Atwood</span></blockquote>
+
+---
 
 ## Play a Game With Your Neighbor
 
@@ -148,7 +155,11 @@ knit        : slidify::knit2slides
 
 ## Playing Against a Population
 
-<img src="assets/fig/Simple PD with population-1.png" title="plot of chunk Simple PD with population" alt="plot of chunk Simple PD with population" style="display: block; margin: auto;" />
+<img src="assets/fig/Simple PD with population-1.png" title="plot of chunk Simple PD with population" alt="plot of chunk Simple PD with population" width="500px" height="500px" style="display: block; margin: auto;" />
+<hr/>
+
+*** {name: footer}
+<blockquote>Expectation is the mother of all frustration. <br/><span class="author">-Antonio Banderas</span></blockquote>
 
 --- .big-picture
 <div class='image ape-pic'>
@@ -160,32 +171,48 @@ knit        : slidify::knit2slides
 
 ---
 
-## New Slide
+## Playing More Than Once
 
-<div class="row-fluid">
-  <div class="col-sm-4">
-    <form class="well">
-      <div class="form-group shiny-input-container">
-        <label class="control-label" for="sex">Choose Sex</label>
-        <div>
-          <select id="sex"><option value="Male" selected>Male</option>
-<option value="Female">Female</option></select>
-          <script type="application/json" data-for="sex" data-nonempty="">{}</script>
-        </div>
-      </div>
-      <div class="form-group shiny-input-container">
-        <label class="control-label" for="type">Choose Type</label>
-        <div>
-          <select id="type"><option value="multiBarChart" selected>multiBarChart</option>
-<option value="multiBarHorizontalChart">multiBarHorizontalChart</option></select>
-          <script type="application/json" data-for="type" data-nonempty="">{}</script>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="col-sm-8">
-    <div id="nvd3plot" class="shiny-html-output nvd3 rChart"></div>
-  </div>
-</div>
+<img src="assets/fig/C vs D repeated interactions, -1.png" title="plot of chunk C vs D repeated interactions, " alt="plot of chunk C vs D repeated interactions, " style="display: block; margin: auto;" />
+
+---&twocol
+
+## Tit For Tat
+
+<br>
+<br>
+
+*** {name: left}
+<img src="assets/img/tft_flow.png" title="plot of chunk Tit For Tat flow" alt="plot of chunk Tit For Tat flow" width="500px" style="display: block; margin: auto;" />
+
+*** {name: right}
+<img src="assets/img/tft_attributes.png" title="plot of chunk Tit for Tat Attributes" alt="plot of chunk Tit for Tat Attributes" width="500px" style="display: block; margin: auto;" />
+
+
+*** {name: footer}
+<br>
+<br>
+
+<hr/>
+<blockquote>There is one word which may serve as a rule of practice for all one&apos;s life - reciprocity.<br/><span class="author">-Confucius</span></blockquote>
+
+---
+
+## Tit For Tat In A Population
+
+<img src="assets/fig/TFT vs D repeated interactions, -1.png" title="plot of chunk TFT vs D repeated interactions, " alt="plot of chunk TFT vs D repeated interactions, " style="display: block; margin: auto;" />
+
+---
+
+
+```
+## Error in eval(expr, envir, enclos): could not find function "ggtern"
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'base' not found
+```
+
+
 
 
