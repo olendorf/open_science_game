@@ -204,14 +204,9 @@ knit        : slidify::knit2slides
 
 ---
 
+## Optimal Strategies in a Free For All
 
-```
-## Error in eval(expr, envir, enclos): could not find function "ggtern"
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'base' not found
-```
+<img src="assets/fig/Ternary Plot with 3 interactions, -1.png" title="plot of chunk Ternary Plot with 3 interactions, " alt="plot of chunk Ternary Plot with 3 interactions, " style="display: block; margin: auto;" />
 
 
 

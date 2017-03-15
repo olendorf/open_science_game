@@ -25,8 +25,6 @@ knit        : slidify::knit2slides
     library(package_name, character.only = TRUE)
   }
   
-  library(png) 
-  install_and_load("ggtern")
   
 ```
 
@@ -48,6 +46,7 @@ knit        : slidify::knit2slides
   tft_color <- 'steelblue4'
   
   mu <- seq(1, 15, 2)   # expected number of interactions
+
 ```
 
 
@@ -55,6 +54,7 @@ knit        : slidify::knit2slides
 ```{r, A researcher\'s dilemma, fig.width=8.0, echo=FALSE, fig.align='center'}
 
    
+  library(png)
   library(grid)
   img <- readPNG("assets/img/whats_in_it_for_me.png")
   grid.raster(img, just="centre")
@@ -303,7 +303,12 @@ legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1
 
 ---
 
-```{r, Ternary Plot with 3 interactions, , echo=FALSE, fig.align='center'}
+## Optimal Strategies in a Free For All
+
+```{r, Ternary Plot with 3 interactions, , echo=FALSE, fig.align='center', fig.width=13}
+  library(ggtern)
+  library(ggplot2)
+
   freq_c = c()
   freq_d = c()
   freq_tft = c()
@@ -332,11 +337,96 @@ legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1
                        ifelse(tern_data$fit_d_3 >= tern_data$fit_c_3 & 
                               tern_data$fit_d_3 >= tern_data$fit_tft_3, 'Defect', 'TFT'))
   
-  base = ggtern(data=tern_data, aes(freq_c, freq_d, freq_tft, color = factor(opt_3), alpha = 0.5))
-base + theme_matrix() + geom_point(alpha = 0.1) +  scale_color_manual(values = c(c_color, d_color, tft_color)) + theme_showarrows() + labs(title = "Optimal Strategy\nInteractions = 3", fill = "Strategy", x = 'Cooperate', y = 'Defect', z = 'TFT')
+  tern_3 <- ggtern(data=tern_data, aes(freq_c, freq_d, freq_tft, color = factor(opt_3), alpha = 0.5), Tlab(label = ''))
+  
+  tern_3 <- tern_3 + 
+            theme_linedraw() + 
+            geom_point(alpha = 0.9) +  
+            scale_color_manual('Optimal Strategy', values = c(c_color, d_color, tft_color)) + 
+            theme_showarrows() + 
+            labs(title = "Interactions = 3", fill = "Strategy", x = 'Cooperate', y = 'Defect', z = 'TFT') + 
+            theme(axis.title.x = element_blank(), legend.position = 'bottom') + 
+            theme_hidetitles() + 
+            theme_gridsontop()
+  
+  
+  tern_data$fit_c_9 <- tern_data$freq_c * p_cc + 
+                       tern_data$freq_tft * p_cc + 
+                       tern_data$freq_d * p_dc
+  tern_data$fit_tft_9 <- tern_data$freq_c * p_cc + 
+                         tern_data$freq_tft * p_cc + 
+                         tern_data$freq_d * (p_dc/mu[[5]] + (p_dd * (mu[[5]] -1))/mu[[5]])
 
+  tern_data$fit_d_9 <- tern_data$freq_c * p_cd + 
+                       tern_data$freq_tft * (p_cd/mu[[5]] + (p_dd * (mu[[5]] - 1))/mu[[5]]) + 
+                       tern_data$freq_d * p_dd
+  
+  tern_data$opt_9 <- ifelse(tern_data$fit_c_9 >= tern_data$fit_d_9 & 
+                            tern_data$fit_c_9 >= tern_data$fit_tft_9, 'Cooperate',
+                       ifelse(tern_data$fit_d_9 >= tern_data$fit_c_9 & 
+                              tern_data$fit_d_9 >= tern_data$fit_tft_9, 'Defect', 'TFT'))
+  
+  tern_9 <- ggtern(data=tern_data, aes(freq_c, freq_d, freq_tft, color = factor(opt_9), alpha = 0.5), Tlab(label = ''))
+  
+  tern_9 <- tern_9 + 
+            theme_linedraw() + 
+            geom_point(alpha = 0.9) +  
+            scale_color_manual('Optimal Strategy', values = c(c_color, d_color, tft_color)) + 
+            theme_showarrows() + 
+            labs(title = "Interactions = 9", fill = "Strategy", x = 'Cooperate', y = 'Defect', z = 'TFT') + 
+            theme(axis.title.x = element_blank(), legend.position = 'bottom') + 
+            theme_hidetitles() + 
+            theme_gridsontop()
+  
+  
+  tern_data$fit_c_15 <- tern_data$freq_c * p_cc + 
+                       tern_data$freq_tft * p_cc + 
+                       tern_data$freq_d * p_dc
+  tern_data$fit_tft_15 <- tern_data$freq_c * p_cc + 
+                         tern_data$freq_tft * p_cc + 
+                         tern_data$freq_d * (p_dc/mu[[8]] + (p_dd * (mu[[8]] -1))/mu[[8]])
 
-
+  tern_data$fit_d_15 <- tern_data$freq_c * p_cd + 
+                       tern_data$freq_tft * (p_cd/mu[[8]] + (p_dd * (mu[[8]] - 1))/mu[[8]]) + 
+                       tern_data$freq_d * p_dd
+  
+  tern_data$opt_15 <- ifelse(tern_data$fit_c_15 >= tern_data$fit_d_15 & 
+                            tern_data$fit_c_15 >= tern_data$fit_tft_15, 'Cooperate',
+                       ifelse(tern_data$fit_d_15 >= tern_data$fit_c_15 & 
+                              tern_data$fit_d_15 >= tern_data$fit_tft_15, 'Defect', 'TFT'))
+  
+  tern_15 <- ggtern(data=tern_data, aes(freq_c, freq_d, freq_tft, color = factor(opt_15), alpha = 0.5), Tlab(label = ''))
+  
+  tern_15 <- tern_15 + 
+            theme_linedraw() + 
+            geom_point(alpha = 0.9) +  
+            scale_color_manual('Optimal Strategy', values = c(c_color, d_color, tft_color)) + 
+            theme_showarrows() + 
+            labs(title = "Interactions = 15", fill = "Strategy", x = 'Cooperate', y = 'Defect', z = 'TFT') + 
+            theme(axis.title.x = element_blank(), legend.position = 'bottom') + 
+            theme_hidetitles() + 
+            theme_gridsontop()
+  
+  #extract legend
+  #https://github.com/hadley/ggplot2/wiki/Share-a-legend-between-two-ggplot2-graphs
+  g_legend<-function(a.gplot){
+    tmp <- ggplot_gtable(ggplot_build(a.gplot))
+    leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
+    legend <- tmp$grobs[[leg]]
+    return(legend)}
+  
+  multi_legend <- g_legend(tern_3)
+  
+  grid.arrange(
+    arrangeGrob(
+      tern_3 + theme(legend.position='none'), 
+      tern_9 + theme(legend.position='none'), 
+      tern_15 + theme(legend.position='none'), 
+      nrow = 1
+    ),
+    multi_legend,
+    nrow = 2, heights = c(10, 1)
+  )
 ```
 
 
