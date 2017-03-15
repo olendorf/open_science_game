@@ -213,11 +213,26 @@ knit        : slidify::knit2slides
 
 <img src="assets/fig/TFT vs D repeated interactions, -1.png" title="plot of chunk TFT vs D repeated interactions, " alt="plot of chunk TFT vs D repeated interactions, " style="display: block; margin: auto;" />
 
+
+*** {name: footer}
+
+
+<hr/>
+<blockquote>It&apos;s good to have the opportunity to help others who have helped you. It&apos;s not about &ldquo;tit for tat&rdquo; it&apos;s  about &ldquo;I love you, too.&rdquo;<br/><span class="author">-Karen E. Quinones Miller (Author, Community Activist)</span></blockquote>
+
 ---
 
 ## Optimal Strategies in a Free For All
 
 <img src="assets/fig/Ternary Plot with 3 interactions, -1.png" title="plot of chunk Ternary Plot with 3 interactions, " alt="plot of chunk Ternary Plot with 3 interactions, " style="display: block; margin: auto;" />
+
+
+
+*** {name: footer}
+
+
+<hr/>
+<blockquote>The devil can cite Scripture for his purpose.<br/><span class="author">-William Shakespear in &ldquo;The Merchant of Venice&rdquo;</span></blockquote>
 
 ---
 
