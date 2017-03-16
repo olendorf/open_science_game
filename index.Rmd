@@ -54,8 +54,8 @@ knit        : slidify::knit2slides
 ```{r, A researcher\'s dilemma, fig.width=8.0, echo=FALSE, fig.align='center'}
 
    
-  library(png)
-  library(grid)
+  install_and_load('png')
+  install_and_load('grid')
   img <- readPNG("assets/img/whats_in_it_for_me.png")
   grid.raster(img, just="centre")
 
@@ -324,8 +324,8 @@ legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1
 ## Optimal Strategies in a Free For All
 
 ```{r, Ternary Plot with 3 interactions, , echo=FALSE, fig.align='center', fig.width=13}
-  library(ggtern)
-  library(ggplot2)
+  install_and_load('ggplot2')
+  install_and_load('ggtern')
 
   freq_c = c()
   freq_d = c()
