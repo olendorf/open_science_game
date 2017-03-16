@@ -56,6 +56,8 @@ Make any changes you like then run Knitr. You can use the Knitr button in RStudi
 
 For more on editing Slidify files use the [Slidify](http://slidify.org/) documentation. See [Knitr]([Slidify](http://slidify.org/)) for more on this topic.
 
+## Contributing
 
+If you find changes you would like made to this repo, jsut clone, make the changes and submit a pull request.
 
 
