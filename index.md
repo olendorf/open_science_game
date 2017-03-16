@@ -10,6 +10,9 @@ hitheme     : tomorrow      #
 widgets     : []            # {mathjax, quiz, bootstrap, shiny, interactive}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
+output      :
+  ioslides_presentation: 
+    transition: slower
 ---
 
 
@@ -19,6 +22,9 @@ knit        : slidify::knit2slides
 
 
 <img src="assets/fig/A researcher's dilemma-1.png" title="plot of chunk A researcher's dilemma" alt="plot of chunk A researcher's dilemma" style="display: block; margin: auto;" />
+
+*** {name: pnotes}
+a test
 
 ---&vcenter
 
@@ -36,13 +42,15 @@ knit        : slidify::knit2slides
 
 *** {name: left}
 <br/>
- - Developed in the 1928 by John von Neumann
- - Used to determine optimal behavior
+ - Developed in 1928 by John von Neumann
+ - Used to determine 
+   - Optimal Behavior
+   - Expected Behavior
  <br/>
  - Basic Approach
    - Determine Payoffs
-   - Detrmine Strategies
-   - Find equilibria
+   - Determine Strategies
+   - Find Equilibria
 
 *** {name: right}
 <br/>

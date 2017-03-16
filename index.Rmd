@@ -10,6 +10,9 @@ hitheme     : tomorrow      #
 widgets     : []            # {mathjax, quiz, bootstrap, shiny, interactive}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
+output      :
+  ioslides_presentation: 
+    transition: slower
 ---
 
 ```{r, setup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, error=TRUE}
@@ -58,8 +61,12 @@ knit        : slidify::knit2slides
   install_and_load('grid')
   img <- readPNG("assets/img/whats_in_it_for_me.png")
   grid.raster(img, just="centre")
+  
 
 ```
+
+*** {name: pnotes}
+a test
 
 ---&vcenter
 
@@ -79,13 +86,15 @@ knit        : slidify::knit2slides
 
 *** {name: left}
 <br/>
- - Developed in the 1928 by John von Neumann
- - Used to determine optimal behavior
+ - Developed in 1928 by John von Neumann
+ - Used to determine 
+   - Optimal Behavior
+   - Expected Behavior
  <br/>
  - Basic Approach
    - Determine Payoffs
-   - Detrmine Strategies
-   - Find equilibria
+   - Determine Strategies
+   - Find Equilibria
 
 *** {name: right}
 <br/>
@@ -220,9 +229,9 @@ knit        : slidify::knit2slides
 ```{r, Simple PD with population, echo=FALSE, fig.align='center', out.width="500px", out.height="500px"}
   fit_c <- freq_d * p_dc + (1 - freq_d) * p_cc
   fit_d <- freq_d * p_dd + (1 - freq_d) * p_cd
-  plot(freq_d, fit_d, type = 'l', col = d_color, ylim=c(0, 10), xlim=c(0.0, 1.0), xaxs='i', yaxs='i', xlab = 'Frequency of Defectors', ylab = 'Expected Payoff')
-  lines(freq_d, fit_c, col = c_color)
-  legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1)
+  plot(freq_d, fit_d, type = 'l', col = d_color, ylim=c(0, 10), xlim=c(0.0, 1.0), xaxs='i', yaxs='i', xlab = 'Frequency of Defectors', ylab = 'Expected Payoff', lwd=2)
+  lines(freq_d, fit_c, col = c_color, lwd=2)
+  legend( 0.65, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1, lwd=2)
 
 ```
 
@@ -248,9 +257,10 @@ knit        : slidify::knit2slides
 ```{r, C vs D repeated interactions, , echo=FALSE, fig.align='center'}
 fit_c_in_c_vs_d_iterated <- ((freq_d * p_dc) * mu[[3]])/mu[[3]] + (((1 - freq_d) * p_cc) * mu[[3]])/mu[[3]]
 fit_d_in_c_vs_d_iterated <- ((freq_d * p_dd) * mu[[3]])/mu[[3]] + (((1 - freq_d) * p_cd) * mu[[3]])/mu[[3]]
-plot(freq_d, fit_d_in_c_vs_d_iterated, type = 'l', col = d_color, ylim=c(0, 10), xlim=c(0.0, 1.0), xaxs='i', yaxs='i', xlab = 'Frequency of Defectors', ylab = 'Expected Payoff')
-lines(freq_d, fit_c_in_c_vs_d_iterated, col = c_color)
-legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1)
+plot(freq_d, fit_d_in_c_vs_d_iterated, type = 'l', col = d_color, ylim=c(0, 10), xlim=c(0.0, 1.0), xaxs='i', yaxs='i', xlab = 'Frequency of Defectors', ylab = 'Expected Payoff', lwd=2)
+title(main = 'Expect to play 3 times')
+lines(freq_d, fit_c_in_c_vs_d_iterated, col = c_color, lwd=2)
+legend( 0.65, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1, lwd = 2)
 
 
 ```
@@ -299,15 +309,15 @@ legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1
   fit_d_in_tft_vs_d_9 <- freq_d * p_dd + (1 - freq_d) * (p_cd/mu[[5]] + (p_dd * (mu[[5]] - 1))/mu[[5]])
   fit_d_in_tft_vs_d_15 <- freq_d * p_dd + (1 - freq_d) * (p_cd/mu[[8]] + (p_dd * (mu[[8]] - 1))/mu[[8]])
   
-  plot(freq_d, fit_d_in_tft_vs_d_3, type = 'l', col = d_color, ylim = c(0, 8), xlim = c(0.0, 1.0), xaxs = 'i', yaxs = 'i', xlab = 'Frequency of Defectors', ylab = 'Expected Payoff', lty = 3)
-  lines(freq_d, fit_d_in_tft_vs_d_9, col = d_color, lty = 2)
-  lines(freq_d, fit_d_in_tft_vs_d_15, col = d_color, lty = 1)
-  lines(freq_d, fit_tft_in_tft_vs_d_3, col = tft_color, lty = 3)
-  lines(freq_d, fit_tft_in_tft_vs_d_9, col = tft_color, lty = 2)
-  lines(freq_d, fit_tft_in_tft_vs_d_15, col = tft_color, lty = 1)
+  plot(freq_d, fit_d_in_tft_vs_d_3, type = 'l', col = d_color, ylim = c(0, 8), xlim = c(0.0, 1.0), xaxs = 'i', yaxs = 'i', xlab = 'Frequency of Defectors', ylab = 'Expected Payoff', lty = 3, lwd = 2)
+  lines(freq_d, fit_d_in_tft_vs_d_9, col = d_color, lty = 2, lwd = 2)
+  lines(freq_d, fit_d_in_tft_vs_d_15, col = d_color, lty = 1, lwd = 2)
+  lines(freq_d, fit_tft_in_tft_vs_d_3, col = tft_color, lty = 3, lwd = 2)
+  lines(freq_d, fit_tft_in_tft_vs_d_9, col = tft_color, lty = 2, lwd = 2)
+  lines(freq_d, fit_tft_in_tft_vs_d_15, col = tft_color, lty = 1, lwd = 2)
   
-  legend(0.65, 9.5, c('Defectors', 'Cooperators'), col = c(d_color, tft_color), lty=1)
-  legend(0.65, 7.5, c('3 Interactions', '9 Interactions', '15 Interactions'), lty=c(3, 2, 1))
+  legend(0.65, 9.5, c('Defectors', 'Cooperators'), col = c(d_color, tft_color), lty=1, lwd = 2)
+  legend(0.65, 7.5, c('3 Interactions', '9 Interactions', '15 Interactions'), lty=c(3, 2, 1), lwd = 2)
 
 
 ```
@@ -482,4 +492,4 @@ legend( 0.05, 9.5, c('Defectors', 'Cooperators'), col=c(d_color, c_color), lty=1
 <br>
 <br>
 
-<h5> Slides can be views at <a href="https://olendorf.github.io/open_science_game">https://olendorf.github.io/open_science_game</a>
+<h5> Slides can be viewed at <a href="https://olendorf.github.io/open_science_game">https://olendorf.github.io/open_science_game</a>
